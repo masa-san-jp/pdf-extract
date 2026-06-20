@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Credentials (never commit)
+client_secret*.json
+credentials.json
+token.json
+*.pem
+
+# OS
+.DS_Store
+
+# Output / scratch
+*.out.txt
