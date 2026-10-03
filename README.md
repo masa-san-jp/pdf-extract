@@ -333,3 +333,14 @@ If detection guesses wrong, force it with `--local` or `--drive`.
 ### License
 
 MIT. See [LICENSE](LICENSE).
+
+
+## 思想的背景・開発経緯
+
+このツールは文字データを持つPDFのテキスト抽出に責務を絞り、出典・ページ数のヘッダーとページ指定で、後続の確認・検索・要約に渡せる形を目指しています。OCRやGoogle Workspaceネイティブ文書の変換は混在させず、非対応入力は別に扱います。Driveについても読み取り専用の認証を使う設計です。
+
+[2026年6月20日の初期実装](https://github.com/masa-san-jp/pdf-extract/commit/f5acab8a5960ae9232042afeae2f6df4eeb9f9a0) で、ローカル / Google Drive のPDF入力、ページ指定、出力ヘッダーと終了コードを追加しました。現在の実装入口は [pdf_extract.py](pdf_extract.py) です。DriveのPDFはAPIで内容を取得してから抽出するため、「直接読む」は利用者が先に手動ダウンロードする必要がないという意味で、データ取得自体が不要という意味ではありません。
+
+### Design rationale and history
+
+The tool keeps a narrow text-extraction scope, preserves source/page context, and separates unsupported OCR and native Workspace documents from PDF input. The initial implementation linked above was added on 20 June 2026. Drive input retrieves PDF bytes through the API; it avoids a separate manual download step, not the transfer of file content.
